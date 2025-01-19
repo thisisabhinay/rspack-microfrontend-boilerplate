@@ -1,5 +1,5 @@
 {
-  "name": "shared-state",
+  "name": "@repo/shared-state",
   "version": "1.0.0",
   "type": "module",
   "main": "dist/index.js",

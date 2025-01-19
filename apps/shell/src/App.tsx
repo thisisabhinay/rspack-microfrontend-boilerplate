@@ -1,16 +1,19 @@
-import "./index.scss"
+import { isEmpty } from "@repo/shared-state-react"
 import React, { useEffect, useRef } from "react"
 import ReactDOM from "react-dom/client"
 import Counter from "remotereact/counter"
 import CounterVue from "remotevue/counter"
 import vueMounter from "remotevue/vue-mounter"
+import "./index.scss"
 
 const App = () => {
   const ref = useRef(null)
 
+  console.log({ isEmpty: isEmpty({}) }, isEmpty)
   useEffect(() => {
     vueMounter(CounterVue, ref.current)
   }, [])
+
   return (
     <div className="mt-10 text-3xl mx-auto max-w-6xl">
       <div>Name: shell</div>
