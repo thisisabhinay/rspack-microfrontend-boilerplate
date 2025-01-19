@@ -5,6 +5,7 @@ const path = require("path")
 const { VueLoaderPlugin } = require("vue-loader")
 
 const printCompilationMessage = require("./compilation.config.js")
+const deps = require("./package.json").dependencies
 
 /**
  * @type {import('@rspack/cli').Configuration}
@@ -104,9 +105,10 @@ module.exports = {
       name: "remotevue",
       filename: "remoteEntry.js",
       exposes: {
-        "./counter": "./src/components/counter"
+        "./counter": "./src/components/counter",
+        "./vue-mounter": "./src/vue-mounter"
       },
-      shared: {}
+      shared: { ...deps }
     }),
     new rspack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)

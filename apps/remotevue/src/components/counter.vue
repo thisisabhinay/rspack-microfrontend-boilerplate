@@ -11,7 +11,7 @@ function increment() {
 <template>
   <div>
     <button className="mt-1 bg-teal-600 text-white border-2 p-3 border-teal-600" @click="increment">
-      Clicked {{ count }} times
+      Vue Clicked {{ count }} times
     </button>
   </div>
 </template>
