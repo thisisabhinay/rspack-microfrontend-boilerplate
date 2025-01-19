@@ -2,6 +2,7 @@ const rspack = require("@rspack/core")
 const refreshPlugin = require("@rspack/plugin-react-refresh")
 const isDev = process.env.NODE_ENV === "development"
 const path = require("path")
+const { VueLoaderPlugin } = require("vue-loader")
 
 const printCompilationMessage = require("./compilation.config.js")
 
@@ -15,7 +16,7 @@ module.exports = {
   },
 
   devServer: {
-    port: 5100,
+    port: 5102,
     historyApiFallback: true,
     watchFiles: [path.resolve(__dirname, "src")],
     onListening: function (devServer) {
@@ -36,10 +37,17 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx", ".json"]
+    extensions: [".js", ".ts", ".vue", ".json"]
   },
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: "vue-loader",
+        options: {
+          experimentalInlineMatchResource: true
+        }
+      },
       {
         test: /\.svg$/,
         type: "asset"
@@ -91,19 +99,14 @@ module.exports = {
     ]
   },
   plugins: [
+    new VueLoaderPlugin(),
     new rspack.container.ModuleFederationPlugin({
-      name: "shell",
+      name: "remotevue",
       filename: "remoteEntry.js",
-      exposes: {},
-      remotes: {
-        remotereact: "remotereact@http://localhost:5101/remoteEntry.js",
-        remotevue: "remotevue@http://localhost:5102/remoteEntry.js"
+      exposes: {
+        "./counter": "./src/components/counter"
       },
-      shared: {
-        "react": { eager: true },
-        "react-dom": { eager: true },
-        "react-router-dom": { eager: true }
-      }
+      shared: {}
     }),
     new rspack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
