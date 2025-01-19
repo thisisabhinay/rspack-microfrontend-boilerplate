@@ -1,0 +1,8 @@
+{
+  "extends": "@repo/typescript-config/browser-library.json",
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
