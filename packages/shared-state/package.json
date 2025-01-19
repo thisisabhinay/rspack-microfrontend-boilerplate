@@ -1,14 +1,23 @@
 {
   "name": "shared-state",
   "version": "1.0.0",
+  "type": "module",
   "main": "dist/index.js",
-  "license": "MIT",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "dist/types"
+  ],
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch"
+    "build:types": "tsc --emitDeclarationOnly",
+    "dev": "tsc --watch --showConfig"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
     "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "zustand": "^5.0.3"
   }
 }

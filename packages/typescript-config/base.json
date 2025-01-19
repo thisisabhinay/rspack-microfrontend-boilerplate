@@ -3,8 +3,10 @@
   "compilerOptions": {
     "declaration": true,
     "declarationMap": true,
+    "sourceMap": true,
+    "composite": true,
+    "incremental": true,
     "esModuleInterop": true,
-    "incremental": false,
     "isolatedModules": true,
     "lib": ["es2022", "DOM", "DOM.Iterable"],
     "module": "NodeNext",

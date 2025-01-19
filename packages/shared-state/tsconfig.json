@@ -1,8 +1,14 @@
 {
   "extends": "@repo/typescript-config/browser-library.json",
   "compilerOptions": {
-    "jsx": "react-jsx"
+    "baseUrl": ".",
+    "rootDir": "./src",
+    "declarationDir": "./dist/types",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "outDir": "./dist"
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["node_modules", "dist", "tests/**/*.ts", "tests/**/*.tsx"]
 }
