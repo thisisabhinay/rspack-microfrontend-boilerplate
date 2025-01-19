@@ -100,9 +100,21 @@ module.exports = {
         remotevue: "remotevue@http://localhost:5102/remoteEntry.js"
       },
       shared: {
-        "react": { eager: true },
-        "react-dom": { eager: true },
-        "react-router-dom": { eager: true }
+        "react": {
+          eager: true,
+          singleton: true,
+          strictVersion: true
+        },
+        "react-dom": {
+          eager: true,
+          singleton: true,
+          strictVersion: true
+        },
+        "react-router": {
+          eager: true,
+          singleton: true,
+          strictVersion: true
+        }
       }
     }),
     new rspack.DefinePlugin({

@@ -108,7 +108,13 @@ module.exports = {
         "./counter": "./src/components/counter",
         "./vue-mounter": "./src/vue-mounter"
       },
-      shared: { ...deps }
+      shared: {
+        vue: {
+          requiredVersion: deps["vue"],
+          singleton: true,
+          strictVersion: true
+        }
+      }
     }),
     new rspack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)

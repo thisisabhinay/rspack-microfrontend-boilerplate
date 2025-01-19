@@ -4,6 +4,7 @@ const isDev = process.env.NODE_ENV === "development"
 const path = require("path")
 
 const printCompilationMessage = require("./compilation.config.js")
+const deps = require("./package.json").dependencies
 
 /**
  * @type {import('@rspack/cli').Configuration}
@@ -98,9 +99,21 @@ module.exports = {
         "./counter": "./src/components/counter"
       },
       shared: {
-        "react": { eager: true },
-        "react-dom": { eager: true },
-        "react-router-dom": { eager: true }
+        "react": {
+          requiredVersion: deps["react"],
+          singleton: true,
+          strictVersion: true
+        },
+        "react-dom": {
+          requiredVersion: deps["react-dom"],
+          singleton: true,
+          strictVersion: true
+        },
+        "react-router": {
+          requiredVersion: deps["react-router"],
+          singleton: true,
+          strictVersion: true
+        }
       }
     }),
     new rspack.DefinePlugin({
