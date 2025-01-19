@@ -18,7 +18,7 @@ importers:
         specifier: 5.5.4
         version: 5.5.4
 
-  apps/remote-react:
+  apps/remotereact:
     dependencies:
       react:
         specifier: ^18.2.0
