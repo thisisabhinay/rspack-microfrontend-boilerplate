@@ -2,20 +2,19 @@
   "name": "@repo/shared-state",
   "version": "1.0.0",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
-    "dist",
-    "dist/types"
+    "dist"
   ],
   "scripts": {
-    "build": "tsc",
-    "build:types": "tsc --emitDeclarationOnly",
-    "dev": "tsc --watch --showConfig"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
-    "typescript": "^4.4.4"
+    "@repo/typescript-config": "workspace:*"
   },
   "dependencies": {
     "zustand": "^5.0.3"

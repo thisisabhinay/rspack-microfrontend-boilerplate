@@ -1,17 +1,8 @@
 import { defineConfig } from 'tsup';
+import tsupConfig from '@repo/typescript-config/tsup.json' with { type: 'json' };
 
 export default defineConfig({
-  entry: ['src/index.ts'],
-  format: ['esm'],
-  dts: {
-    compilerOptions: {
-      composite: false,
-      incremental: false,
-    },
-  },
-  splitting: false,
-  sourcemap: true,
-  clean: true,
+  ...tsupConfig,
   treeshake: true,
   external: ['react', 'react-dom'],
 });
