@@ -1,5 +1,5 @@
 {
-  "name": "shell",
+  "name": "remote-react",
   "version": "1.0.0",
   "scripts": {
     "build": "NODE_ENV=production rspack build",

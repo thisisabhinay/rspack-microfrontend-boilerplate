@@ -1,11 +1,12 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import Counter from "remotereact/counter"
+
 import "./index.scss"
+import Counter from "./components/counter"
 
 const App = () => (
   <div className="mt-10 text-3xl mx-auto max-w-6xl">
-    <div>Name: shell</div>
+    <div>Name: apps/remote-react</div>
     <Counter />
   </div>
 )

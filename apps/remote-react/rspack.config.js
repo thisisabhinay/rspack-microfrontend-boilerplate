@@ -15,7 +15,7 @@ module.exports = {
   },
 
   devServer: {
-    port: 5100,
+    port: 5101,
     historyApiFallback: true,
     watchFiles: [path.resolve(__dirname, "src")],
     onListening: function (devServer) {
@@ -92,11 +92,10 @@ module.exports = {
   },
   plugins: [
     new rspack.container.ModuleFederationPlugin({
-      name: "shell",
+      name: "remotereact",
       filename: "remoteEntry.js",
-      exposes: {},
-      remotes: {
-        remotereact: "remotereact@http://localhost:5101/remoteEntry.js"
+      exposes: {
+        "./counter": "./src/components/counter"
       },
       shared: {
         "react": { eager: true },
