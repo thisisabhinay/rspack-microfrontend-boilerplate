@@ -95,6 +95,7 @@ module.exports = {
     new rspack.container.ModuleFederationPlugin({
       name: "remotereact",
       filename: "remoteEntry.js",
+      remotes: {},
       exposes: {
         "./counter": "./src/components/counter"
       },
@@ -111,6 +112,16 @@ module.exports = {
         },
         "react-router": {
           requiredVersion: deps["react-router"],
+          singleton: true,
+          strictVersion: true
+        },
+        "@reduxjs/toolkit": {
+          requiredVersion: deps["@reduxjs/toolkit"],
+          singleton: true,
+          strictVersion: true
+        },
+        "redux": {
+          requiredVersion: deps["redux"],
           singleton: true,
           strictVersion: true
         }

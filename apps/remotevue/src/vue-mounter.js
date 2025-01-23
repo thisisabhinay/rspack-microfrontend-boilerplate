@@ -5,7 +5,7 @@
 import { createApp } from "vue"
 
 /**
- * Initializes and mounts a component to a specified DOM element.
+ * Initializes and mounts vue app to a specified DOM element.
  * This function acts as a simplified version of Vue's createApp functionality,
  * allowing for dynamic component mounting based on component names.
  *

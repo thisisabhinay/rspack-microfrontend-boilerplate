@@ -5,7 +5,7 @@ import Counter from "./components/counter.vue"
 
 <template>
   <div class="mt-10 text-3xl mx-auto max-w-6xl">
-    <div>Name: apps/remotevue</div>
+    <div class="mb-10">Name: apps/remotevue</div>
     <Counter />
   </div>
 </template>

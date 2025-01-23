@@ -1,0 +1,30 @@
+{
+  "name": "@repo/global-store",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.5.0",
+    "redux": "^5.0.1"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "typescript": "^5.7.2"
+  },
+  "peerDependencies": {
+    "@types/react": "^19.0.7",
+    "react": "^18.2.0",
+    "react-redux": "^9.0.0",
+    "vue": "^3.0.0"
+  }
+}

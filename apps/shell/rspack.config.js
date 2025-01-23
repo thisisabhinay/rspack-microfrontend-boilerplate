@@ -102,8 +102,7 @@ module.exports = {
       shared: {
         "react": {
           eager: true,
-          singleton: true,
-          strictVersion: true
+          singleton: true
         },
         "react-dom": {
           eager: true,
@@ -111,6 +110,11 @@ module.exports = {
           strictVersion: true
         },
         "react-router": {
+          eager: true,
+          singleton: true,
+          strictVersion: true
+        },
+        "vue": {
           eager: true,
           singleton: true,
           strictVersion: true

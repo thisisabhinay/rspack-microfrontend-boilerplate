@@ -104,6 +104,7 @@ module.exports = {
     new rspack.container.ModuleFederationPlugin({
       name: "remotevue",
       filename: "remoteEntry.js",
+      remotes: {},
       exposes: {
         "./counter": "./src/components/counter",
         "./vue-mounter": "./src/vue-mounter"

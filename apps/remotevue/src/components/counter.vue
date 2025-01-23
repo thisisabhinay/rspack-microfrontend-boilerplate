@@ -1,17 +1,48 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref, onMounted, onUnmounted } from 'vue';
+import { GlobalStateCommonFacade, type GlobalState } from "@repo/global-store"
 
-const count = ref(0)
+const count = ref(0);
+const globalStore = new GlobalStateCommonFacade();
+let unsubscribe: (() => void) | null = null;
 
 function increment() {
-  count.value = count.value + 1
+  return globalStore.increment()
 }
+
+function decrement() {
+  return globalStore.decrement()
+}
+
+function reset() {
+  return globalStore.reset()
+}
+
+onMounted(() => {
+  count.value = globalStore.count;
+  unsubscribe = globalStore.subscribe((state: GlobalState) => {
+    count.value = state.example.count;
+  });
+});
+
+onUnmounted(() => {
+  if (unsubscribe) {
+    unsubscribe();
+  }
+});
 </script>
 
 <template>
-  <div>
-    <button className="mt-1 bg-teal-600 text-white border-2 p-3 border-teal-600" @click="increment">
-      Vue Clicked {{ count }} times
-    </button>
+<div
+  data-comp="Counter"
+  data-stack="vue"
+  className="p-10 border-2 border-teal-400 shadow-teal-100 shadow-lg rounded-2xl flex items-center justify-between"
+>
+  <h2 className="text-xl font-semibold">Vue Counter: {{count}}</h2>
+  <div className="flex items-center gap-4 font-normal text-base">
+    <button @click="increment">Increment</button>
+    <button @click="decrement">Decrement</button>
+    <button @click="reset">Reset</button>
   </div>
+</div>
 </template>
